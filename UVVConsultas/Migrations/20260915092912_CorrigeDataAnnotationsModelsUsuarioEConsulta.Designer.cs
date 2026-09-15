@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UVVConsultas.Data;
 
@@ -11,9 +12,11 @@ using UVVConsultas.Data;
 namespace UVVConsultas.Migrations
 {
     [DbContext(typeof(UVVConsultasContext))]
-    partial class UVVConsultasContextModelSnapshot : ModelSnapshot
+    [Migration("20260915092912_CorrigeDataAnnotationsModelsUsuarioEConsulta")]
+    partial class CorrigeDataAnnotationsModelsUsuarioEConsulta
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

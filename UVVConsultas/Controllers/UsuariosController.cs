@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UVVConsultas.Models;
 using UVVConsultas.Data;
+using Microsoft.AspNetCore.Authorization;
+
 
 public class UsuariosController : Controller
 {
@@ -38,6 +40,7 @@ public class UsuariosController : Controller
     }
 
     // GET: USUARIOS/Create
+    [AllowAnonymous]
     public IActionResult Create()
     {
         return View();
@@ -48,6 +51,7 @@ public class UsuariosController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [AllowAnonymous]
     public async Task<IActionResult> Create([Bind("Id,Nome,Email,Senha,CreatedAt")] Usuario usuario)
     {
         if (ModelState.IsValid)
