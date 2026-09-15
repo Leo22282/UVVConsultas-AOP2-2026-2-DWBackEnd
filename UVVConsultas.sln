@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37614.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UVVConsultas", "UVVConsultas\UVVConsultas.csproj", "{7AEFD2B1-F4CC-4E2C-AF85-E15C00CF06C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UVVTechFlixWeb22", "..\UVVTechFlix22\UVVTechFlixWeb22\UVVTechFlixWeb22.csproj", "{F97C9E0A-13B4-D777-26A0-7DBBDAB494EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7AEFD2B1-F4CC-4E2C-AF85-E15C00CF06C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AEFD2B1-F4CC-4E2C-AF85-E15C00CF06C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AEFD2B1-F4CC-4E2C-AF85-E15C00CF06C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AEFD2B1-F4CC-4E2C-AF85-E15C00CF06C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F97C9E0A-13B4-D777-26A0-7DBBDAB494EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F97C9E0A-13B4-D777-26A0-7DBBDAB494EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F97C9E0A-13B4-D777-26A0-7DBBDAB494EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F97C9E0A-13B4-D777-26A0-7DBBDAB494EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {56204315-0DAC-4B0C-B611-16D815ADF4B7}
+	EndGlobalSection
+EndGlobal
