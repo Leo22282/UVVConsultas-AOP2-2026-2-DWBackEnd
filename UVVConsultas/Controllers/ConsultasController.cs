@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using UVVConsultas.Data;
 using UVVConsultas.Models;
 
@@ -18,8 +19,12 @@ namespace UVVConsultas.Controllers
         // GET: CONSULTAS
         public async Task<IActionResult> Index()
         {
+            // Obtém o ID do usuário logado a partir das claims
+            var usuarioLogado = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             var consultas = await _context.Consultas
             .Include(c => c.Usuario) // traz o usuário relacionado
+            .Where(c => c.UsuarioId.ToString() == usuarioLogado)
             .ToListAsync();
 
             return View(consultas);

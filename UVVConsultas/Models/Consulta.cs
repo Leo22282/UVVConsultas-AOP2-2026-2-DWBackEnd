@@ -16,7 +16,6 @@ namespace UVVConsultas.Models
 
         [Required]
         [Display(Name = "Data e Hora da Consulta")]
-        [Range(typeof(DateTime), "09/01/2026", "12/31/2100")]
         public DateTime DataHora { get; set; }
 
         public string? Descricao { get; set; }
