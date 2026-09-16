@@ -16,6 +16,13 @@ namespace UVVConsultas.Controllers
             _context = context;
         }
 
+        // Função para obter o ID do usuário logado a partir das claims
+        private int GetCurrentUserId()
+        {
+            var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return int.TryParse(id, out var v) ? v : 0;
+        }
+
         // GET: CONSULTAS
         public async Task<IActionResult> Index()
         {
@@ -37,6 +44,7 @@ namespace UVVConsultas.Controllers
             if (id == null) return NotFound();
 
             var consulta = await _context.Consultas
+                .Include(c => c.Usuario) // <-- garante que Usuario.Nome esteja disponível
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (consulta == null) return NotFound();
 
@@ -46,7 +54,15 @@ namespace UVVConsultas.Controllers
         // GET: CONSULTAS/Create
         public IActionResult Create()
         {
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Nome");
+            // Gera um SelectList contendo apenas o usuário logado
+            var currentUserId = GetCurrentUserId();
+
+            var usuarioFiltrado = _context.Usuarios
+                .Where(u => u.Id == currentUserId)
+                .Select(u => new { u.Id, u.Nome })
+                .ToList();
+
+            ViewData["UsuarioId"] = new SelectList(usuarioFiltrado, "Id", "Nome", currentUserId);
             return View();
         }
 
@@ -75,7 +91,15 @@ namespace UVVConsultas.Controllers
             var consulta = await _context.Consultas.FindAsync(id);
             if (consulta == null) return NotFound();
 
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Nome", consulta.UsuarioId);
+            // Gera um SelectList contendo apenas o usuário logado
+            var currentUserId = GetCurrentUserId();
+
+            var usuarioFiltrado = _context.Usuarios
+                .Where(u => u.Id == currentUserId)
+                .Select(u => new { u.Id, u.Nome })
+                .ToList();
+
+            ViewData["UsuarioId"] = new SelectList(usuarioFiltrado, "Id", "Nome", currentUserId);
             return View(consulta);
         }
 
@@ -111,6 +135,7 @@ namespace UVVConsultas.Controllers
             if (id == null) return NotFound();
 
             var consulta = await _context.Consultas
+                .Include(c => c.Usuario) // <-- garante que Usuario.Nome esteja disponível
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (consulta == null) return NotFound();
 
